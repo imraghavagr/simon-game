@@ -77,21 +77,24 @@ function checkAnswer(currenLevel){
 }
 
 $(".btn").click(function() {
-    var userChosenColour = $(this).attr("id");
-    //add to userClickPattern array 
-    userClickedPattern.push(userChosenColour);
-    //play sound for this button-color
-    playSoundForButton(userChosenColour);
-    //give animation for this button-color
-    flashAnimation(userChosenColour);
-    animatePress(userChosenColour); 
+    if(level > 0){
+        var userChosenColour = $(this).attr("id");
+        //add to userClickPattern array 
+        userClickedPattern.push(userChosenColour);
+        //play sound for this button-color
+        playSoundForButton(userChosenColour);
+        //give animation for this button-color
+        flashAnimation(userChosenColour);
+        animatePress(userChosenColour); 
 
-    checkAnswer(userClickedPattern.length-1);
+        checkAnswer(userClickedPattern.length-1);
+    }
 });
 
-if(level == 0){
-    $(document).keydown(function(event) {
+
+$(document).keydown(function(event) {
+    if(level == 0){
         nextSequence();
-    });
-}
+    }
+});
 
