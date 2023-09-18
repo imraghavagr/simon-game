@@ -92,7 +92,13 @@ $(".btn").click(function() {
 });
 
 
-$(document).keydown(function(event) {
+$(document).keydown(function() {
+    if(level == 0){
+        nextSequence();
+    }
+});
+
+$(document).on("tap",function(){
     if(level == 0){
         nextSequence();
     }
